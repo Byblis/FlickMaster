@@ -1,40 +1,39 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.widget.TextView;
-import android.widget.Button;
-import android.view.View;
-import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // レイアウトを設定
         setContentView(R.layout.activity_main);
 
-        // TextViewとButtonを取得
+        // UIコンポーネントの初期化
         TextView textView = findViewById(R.id.textView);
         Button button = findViewById(R.id.button);
 
-        // ボタンのクリックイベントを設定
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // テキスト変更
-                textView.setText("ボタンが押されました！");
-                // TypingActivityに遷移
-                Intent intent = new Intent(MainActivity.this, TypingActivity.class);
-                startActivity(intent);
-            }
+        // ボタンのクリックリスナー
+        button.setOnClickListener(v -> {
+            // テキストを変更
+            textView.setText("ボタンが押されました！");
+            // TypingActivityに遷移
+            Intent intent = new Intent(MainActivity.this, TypingActivity.class);
+            startActivity(intent);
         });
 
-        // システムバーのインセット適用
+        // EdgeToEdgeを有効化（testappの機能）
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            WindowInsetsCompat.Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
