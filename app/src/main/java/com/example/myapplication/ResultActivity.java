@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import androidx.core.graphics.Insets;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class ResultActivity extends AppCompatActivity {
         // UIコンポーネントの初期化
         TextView finalScoreTextView = findViewById(R.id.finalScoreTextView);
         Button retryButton = findViewById(R.id.retryButton);
+        Button homeButton = findViewById(R.id.homeButton); // ✅ ホームボタンを追加
 
         // スコアを表示
         Intent intent = getIntent();
@@ -34,11 +36,19 @@ public class ResultActivity extends AppCompatActivity {
             finish(); // 現在の画面を終了
         });
 
+        // ✅ ホームボタンのクリックリスナーを追加
+        homeButton.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(ResultActivity.this, MainActivity.class);
+            startActivity(homeIntent);
+            finish(); // 現在の画面を終了
+        });
+
         // システムバーのインセットを適用（もし必要なら）
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            WindowInsetsCompat.Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
     }
 }

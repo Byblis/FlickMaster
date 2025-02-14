@@ -21,15 +21,30 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- リトライボタン -->
+
     <Button
         android:id="@+id/retryButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="もう一度プレイ"
-        android:textSize="18sp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/finalScoreTextView"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/button_color"
+        android:text="リトライ"
+        android:textColor="@android:color/white"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="1059dp" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:backgroundTint="@color/button_color"
+        android:text="ホームに戻る"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/retryButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

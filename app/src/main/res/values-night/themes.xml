@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- ダークモード時の背景色を設定 -->
+        <item name="android:windowBackground">@color/background_color</item> <!-- ✅ ここだけ残す！ -->
     </style>
 </resources>
