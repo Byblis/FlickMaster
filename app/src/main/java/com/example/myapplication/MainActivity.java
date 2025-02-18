@@ -33,5 +33,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ProfileEditActivity.class);
             startActivity(intent);
         });
+
+        Button rankingButton = findViewById(R.id.rankingButton);
+        rankingButton.setOnClickListener(v -> {
+            RankingManager.openRankingActivity(MainActivity.this);
+        });
+
+
+
     }
 }

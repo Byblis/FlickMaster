@@ -1,0 +1,49 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RankingActivity">
+
+    <TextView
+        android:id="@+id/rankingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:text="ランキングデータがありません"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 🔥 リプレイボタン（ホームボタンの上に配置） -->
+    <Button
+        android:id="@+id/replayButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="リプレイ"
+        android:textSize="18sp"
+        android:backgroundTint="@color/replay_button_color"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/rankingTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" /> <!-- ✅ ここを修正 -->
+
+    <!-- 🔥 ホームに戻るボタン（リプレイボタンの下に配置） -->
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ホームに戻る"
+        android:textSize="18sp"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/replayButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" /> <!-- ✅ ここを修正 -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

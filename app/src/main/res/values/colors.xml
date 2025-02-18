@@ -11,6 +11,8 @@
     <color name="button_color_pressed">#1E88E5</color> <!-- 押したときの色 -->
     <color name="background_color">#E0F8EC</color>
     <color name="send_button_color">#85c1e9</color>
-    <color name="send_button_text_color">#FF9800</color> <!-- 白色 -->
+    <color name="send_button_text_color">#FF9800</color>
+    <color name="replay_button_color">#01DFA5</color>
+    <color name="home_button_color">#01DFA5</color>
 
 </resources>

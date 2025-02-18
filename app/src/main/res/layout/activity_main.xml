@@ -8,11 +8,6 @@
     tools:context=".MainActivity">
 
     <!-- ⭐ タイトル -->
-
-    <!-- ✅ ボタンを MaterialButton に変更！ -->
-
-    <!-- ✅ プロフィール編集ボタンも MaterialButton に変更！ -->
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -38,34 +33,48 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500
-"
+        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.744" />
 
+    <!-- ✅ `android:layout_marginTop` を削除し、`app:layout_marginTop` に統一 -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/startButton"
         style="@style/BaseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="START"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profileButton"
         style="@style/BaseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:text="プロフィール編集"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/startButton" />
+        app:layout_constraintTop_toBottomOf="@id/startButton"
+        android:layout_marginTop="24dp"/> <!-- 🔥 修正 -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rankingButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ランキングを見る"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileButton"
+        android:layout_marginTop="24dp"/> <!-- 🔥 修正 -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

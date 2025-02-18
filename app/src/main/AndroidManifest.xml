@@ -18,13 +18,14 @@
             </intent-filter>
         </activity>
 
-        <!-- ResultActivity を登録 -->
         <activity android:name=".ResultActivity" />
 
-        <!-- TypingActivity を登録 -->
         <activity android:name=".TypingActivity" />
 
         <activity android:name="com.example.testapp.ProfileEditActivity" />
+
+        <activity android:name=".RankingActivity"/>
+
 
     </application>
 

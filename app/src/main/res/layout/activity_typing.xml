@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -12,60 +13,62 @@
         android:id="@+id/randomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="ランダムテキスト"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/> <!-- 🔥 修正 -->
 
     <!-- スコア表示 -->
     <TextView
         android:id="@+id/scoreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="スコア: 0"
         android:textSize="18sp"
         android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/randomTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/> <!-- 🔥 修正 -->
 
     <!-- タイマー表示 -->
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="残り時間: 60秒"
         android:textSize="18sp"
         android:textColor="#FF0000"
         app:layout_constraintTop_toBottomOf="@id/scoreTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/> <!-- 🔥 修正 -->
 
     <!-- 入力エリア -->
     <EditText
         android:id="@+id/userInputEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:hint="ここに入力してください"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timerTextView" />
+        app:layout_constraintTop_toBottomOf="@id/timerTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="20dp"/> <!-- 🔥 修正 -->
 
+    <!-- 送信ボタン -->
     <Button
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="送信"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/button_color"
         app:layout_constraintTop_toBottomOf="@id/userInputEditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/> <!-- 🔥 修正 -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
