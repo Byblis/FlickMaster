@@ -1,10 +1,13 @@
-
 package com.example.myapplication;
 
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
+import android.widget.Button; // ✅ これがないとエラーになる！
+import android.content.Intent;
+
+
 
 public class RankingActivity extends AppCompatActivity {
 
@@ -15,6 +18,8 @@ public class RankingActivity extends AppCompatActivity {
 
         // UIコンポーネント
         TextView rankingTextView = findViewById(R.id.rankingTextView);
+        Button replayButton = findViewById(R.id.replayButton); // 🔥 リプレイボタン取得
+        Button homeButton = findViewById(R.id.homeButton); // 🔥 ホームボタン取得
 
         // ランキングデータを取得
         List<RankingEntry> rankingList = RankingManager.getRanking(this);
@@ -33,5 +38,18 @@ public class RankingActivity extends AppCompatActivity {
         }
 
         rankingTextView.setText(rankingText.toString());
+        // 🔥 リプレイボタンの処理
+        replayButton.setOnClickListener(v -> {
+            Intent replayIntent = new Intent(RankingActivity.this, TypingActivity.class);
+            startActivity(replayIntent);
+            finish();
+        });
+
+        // 🔥 ホームに戻るボタンの処理
+        homeButton.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(RankingActivity.this, MainActivity.class);
+            startActivity(homeIntent);
+            finish();
+        });
     }
 }
