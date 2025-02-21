@@ -1,12 +1,14 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log; // 🔥 追加
+import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import android.content.Intent;
+
 
 public class RankingManager {
     private static final String PREFS_NAME = "RankingPrefs";
@@ -21,7 +23,7 @@ public class RankingManager {
         // 既存のランキングを取得
         List<RankingEntry> rankingList = getRanking(context);
 
-        // 🔥 デバッグログ
+        // 🔥 デバッグログ（保存前）
         Log.d("RankingManager", "保存前のランキング: " + rankingList.toString());
         Log.d("RankingManager", "追加するスコア: " + username + " - " + score);
 
@@ -36,7 +38,7 @@ public class RankingManager {
             rankingList = rankingList.subList(0, MAX_RANKINGS);
         }
 
-        // 🔥 デバッグログ
+        // 🔥 デバッグログ（保存後）
         Log.d("RankingManager", "保存後のランキング: " + rankingList.toString());
 
         // 保存するためのデータ変換
@@ -48,6 +50,9 @@ public class RankingManager {
         // データを保存
         editor.putString(KEY_RANKING, rankingData.toString());
         editor.apply();
+
+        // 🔥 確認のため、保存直後に読み込んでみる
+        Log.d("RankingManager", "実際に保存されたデータ: " + prefs.getString(KEY_RANKING, "データなし"));
     }
 
     // 🔹 **ランキングデータを取得**
@@ -73,7 +78,7 @@ public class RankingManager {
             }
         }
 
-        // 🔥 デバッグログ
+        // 🔥 デバッグログ（取得）
         Log.d("RankingManager", "取得したランキング: " + rankingList.toString());
 
         return rankingList;
@@ -85,7 +90,3 @@ public class RankingManager {
         context.startActivity(intent);
     }
 }
-
-
-
-

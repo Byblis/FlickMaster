@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.cardview.widget.CardView;
 import android.widget.TextView;
 import java.util.List;
+import android.util.Log;
+import androidx.core.content.ContextCompat;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHolder> {
     private List<RankingEntry> rankingList;
+    private final Context context;
 
-    public RankingAdapter(List<RankingEntry> rankingList) {
+    public RankingAdapter(Context context, List<RankingEntry> rankingList) {
+        this.context = context;
         this.rankingList = rankingList;
     }
 
@@ -29,25 +33,41 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RankingEntry entry = rankingList.get(position);
 
-        // 🔥 順位・名前・スコアをセット
-        holder.rankTextView.setText(String.valueOf(position + 1));
+        // **🔥 デフォルトのデザインをリセット**
+        holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
+        holder.rankTextView.setTextColor(ContextCompat.getColor(context, android.R.color.black));
+        holder.rankTextView.setText(String.valueOf(entry.getRank())); // 順位をセット
+
+        // **🔥 1位～3位のデザインを変更**
+        switch (entry.getRank()) {
+            case 1:
+                holder.rankTextView.setText("🥇 " + entry.getRank());
+                holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.light_gold));
+                holder.rankTextView.setTextColor(ContextCompat.getColor(context, R.color.gold));
+                break;
+            case 2:
+                holder.rankTextView.setText("🥈 " + entry.getRank());
+                holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.light_silver));
+                holder.rankTextView.setTextColor(ContextCompat.getColor(context, R.color.silver));
+                break;
+            case 3:
+                holder.rankTextView.setText("🥉 " + entry.getRank());
+                holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.light_bronze));
+                holder.rankTextView.setTextColor(ContextCompat.getColor(context, R.color.bronze));
+                break;
+            default:
+                holder.rankTextView.setText(String.valueOf(entry.getRank()));
+                break;
+        }
+
+        // 🔹 プレイヤー名とスコアをセット
         holder.playerNameTextView.setText(entry.getUsername());
         holder.scoreTextView.setText(entry.getScore() + "点");
-
-        // 🔥 順位ごとに背景色を変える
-        if (position == 0) {
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#FFD700")); // ゴールド
-        } else if (position == 1) {
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#C0C0C0")); // シルバー
-        } else if (position == 2) {
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#CD7F32")); // ブロンズ
-        } else {
-            holder.cardView.setCardBackgroundColor(Color.WHITE); // 通常の背景
-        }
     }
 
     @Override
     public int getItemCount() {
+        Log.d("RankingAdapter", "リストのアイテム数: " + rankingList.size());
         return rankingList.size();
     }
 
@@ -64,4 +84,5 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
         }
     }
 }
+
 
