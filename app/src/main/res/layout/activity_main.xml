@@ -81,7 +81,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/rankingButton"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="56dp"
         android:text="ランキングを見る"
         android:backgroundTint="@color/button_color"
         android:textColor="@android:color/white"

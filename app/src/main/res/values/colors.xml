@@ -6,7 +6,13 @@
     <color name="purple_700">#3700B3</color>
     <color name="teal_200">#03DAC5</color>
     <color name="teal_700">#018786</color>
+    <color name="gold">#FFD700</color> <!-- 金 -->
+    <color name="silver">#C0C0C0</color> <!-- 銀 -->
+    <color name="bronze">#CD7F32</color> <!-- 銅 -->
 
+    <color name="light_gold">#FFF8DC</color>  <!-- 金の背景 -->
+    <color name="light_silver">#F5F5F5</color>  <!-- 銀の背景 -->
+    <color name="light_bronze">#FAEBD7</color>  <!-- 銅の背景 -->
     <color name="button_color">#01DFA5</color><!-- ボタンの色 -->
     <color name="button_color_pressed">#1E88E5</color> <!-- 押したときの色 -->
     <color name="background_color">#E0F8EC</color>
