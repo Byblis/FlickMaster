@@ -1,16 +1,14 @@
 package com.example.testapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.net.Uri;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -24,21 +22,14 @@ public class ProfileEditActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1; // ギャラリー選択リクエストコード
 
     private EditText editName;
-    private Button saveProfileButton; // ✅ IDを修正
+    private Button saveProfileButton;
     private TextView displayName;
     private ImageView profileImage;
-    private int level = 1; // 現在のレベル
-    private int experience = 0; // 現在の経験値
-    private int experienceToNextLevel = 100; // 次のレベルに必要な経験値
-
-    // レベル表示用ビュー
-    private TextView levelText;
-    private ProgressBar levelProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_edit); // ✅ レイアウトを適用
+        setContentView(R.layout.activity_profile_edit);
 
         // 画面のメインビュー取得
         View mainView = findViewById(R.id.main);
@@ -54,11 +45,9 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         // 各ビューを取得
         editName = findViewById(R.id.editName);
-        saveProfileButton = findViewById(R.id.saveProfileButton); // ✅ 修正済み
+        saveProfileButton = findViewById(R.id.saveProfileButton);
         displayName = findViewById(R.id.displayName);
         profileImage = findViewById(R.id.profileImage);
-        levelText = findViewById(R.id.levelText);
-        levelProgressBar = findViewById(R.id.levelProgressBar);
 
         // UIが正しく取得できているか確認
         if (profileImage == null || editName == null || saveProfileButton == null) {
@@ -72,7 +61,6 @@ public class ProfileEditActivity extends AppCompatActivity {
         saveProfileButton.setOnClickListener(v -> {
             String name = editName.getText().toString();
             displayName.setText("名前: " + name);
-            addExperience(20); // ✅ 経験値を追加
         });
 
         // ✅ 「ゲームを始める」ボタンの取得と設定
@@ -81,27 +69,6 @@ public class ProfileEditActivity extends AppCompatActivity {
             Intent intent = new Intent(ProfileEditActivity.this, TypingActivity.class);
             startActivity(intent);
         });
-
-        // UIの初期更新
-        updateLevelUI();
-    }
-
-    // 🎮 経験値を追加し、レベルアップ処理
-    private void addExperience(int points) {
-        experience += points;
-        if (experience >= experienceToNextLevel) {
-            level++;
-            experience -= experienceToNextLevel; // 必要経験値を減らす
-            experienceToNextLevel += 50; // 次のレベルに必要な経験値を増加
-        }
-        updateLevelUI(); // UIを更新
-    }
-
-    // 📊 レベルと経験値バーのUIを更新
-    private void updateLevelUI() {
-        levelText.setText("レベル: " + level);
-        levelProgressBar.setMax(experienceToNextLevel);
-        levelProgressBar.setProgress(experience);
     }
 
     // 🖼 ギャラリーを開く
@@ -121,4 +88,3 @@ public class ProfileEditActivity extends AppCompatActivity {
         }
     }
 }
-

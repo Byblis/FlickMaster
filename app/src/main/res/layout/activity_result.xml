@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="24dp"/> <!-- 🔥 252dp を 24dp に変更 -->
+        android:layout_marginTop="24dp"/>
 
     <!-- プレイヤー名入力欄 -->
     <EditText
@@ -34,6 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
+    <!-- リトライボタン -->
     <Button
         android:id="@+id/retryButton"
         android:layout_width="match_parent"
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/playerNameEditText"
         android:layout_marginTop="24dp"/>
 
-    <!-- ホームボタン -->
+    <!-- ホームに戻るボタン -->
     <Button
         android:id="@+id/homeButton"
         android:layout_width="match_parent"
@@ -57,9 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/retryButton"
-        android:layout_marginTop="24dp"/>
-
-
+        android:layout_marginTop="16dp"/>
 
     <!-- ランキングを見るボタン -->
     <Button
@@ -72,6 +71,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeButton"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="16dp"/>
+
+    <!-- 🔹 庭へ行くボタン（追加！） -->
+    <Button
+        android:id="@+id/gardenButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="庭へ行く"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewRankingButton"
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -19,35 +19,34 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        // UIコンポーネントの初期化
+        // 🔹 UIコンポーネントの初期化
         TextView finalScoreTextView = findViewById(R.id.finalScoreTextView);
         EditText playerNameEditText = findViewById(R.id.playerNameEditText);
         Button retryButton = findViewById(R.id.retryButton);
         Button homeButton = findViewById(R.id.homeButton);
         Button viewRankingButton = findViewById(R.id.viewRankingButton);
+        Button gardenButton = findViewById(R.id.gardenButton); // 🔥 庭へ行くボタンを追加
 
-        // SharedPreferences から前回の名前を取得
+        // 🔹 SharedPreferences から前回の名前を取得
         SharedPreferences prefs = getSharedPreferences("PlayerPrefs", MODE_PRIVATE);
         String savedName = prefs.getString("player_name", "Player"); // デフォルトは "Player"
         playerNameEditText.setText(savedName);
 
-        // スコアを取得
+        // 🔹 スコアを取得
         Intent intent = getIntent();
         int score = intent.getIntExtra("SCORE", 0);
         finalScoreTextView.setText("スコア: " + score);
 
-        // 🔥 **画面が開いた時にスコアを自動保存**
+        // 🔥 **スコアを自動保存**
         if (!savedName.isEmpty()) { // 名前がある場合のみ保存
             RankingManager.saveScore(this, savedName, score);
             Log.d("AutoSave", "スコアが自動保存されました: " + savedName + " - " + score);
         }
 
-        // 🔥 ランキング画面に移動
-        viewRankingButton.setOnClickListener(v -> {
-            RankingManager.openRankingActivity(ResultActivity.this);
-        });
+        // 🔹 **ランキング画面に移動**
+        viewRankingButton.setOnClickListener(v -> RankingManager.openRankingActivity(ResultActivity.this));
 
-        // 🔥 ホーム画面に戻る
+        // 🔹 **ホーム画面に戻る**
         homeButton.setOnClickListener(v -> {
             Intent homeIntent = new Intent(ResultActivity.this, MainActivity.class);
             startActivity(homeIntent);
@@ -59,6 +58,12 @@ public class ResultActivity extends AppCompatActivity {
             Intent retryIntent = new Intent(ResultActivity.this, TypingActivity.class);
             startActivity(retryIntent);
             finish();
+        });
+
+        // ✅ **庭へ行くボタンの処理**
+        gardenButton.setOnClickListener(v -> {
+            Intent gardenIntent = new Intent(ResultActivity.this, GardenActivity.class);
+            startActivity(gardenIntent);
         });
 
         // システムバーのインセットを適用
