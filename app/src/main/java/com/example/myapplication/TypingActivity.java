@@ -47,13 +47,13 @@ public class TypingActivity extends AppCompatActivity {
         userInputEditText = findViewById(R.id.userInputEditText);
         submitButton = findViewById(R.id.submitButton);
 
-        // 🔹 プレイヤー名を取得
+        // プレイヤー名を取得
         playerName = getIntent().getStringExtra("PLAYER_NAME");
         if (playerName == null) {
             playerName = "Player"; // デフォルト
         }
 
-        // 🔹 SoundPool の初期化
+        // SoundPool の初期化
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         } else {
@@ -68,11 +68,11 @@ public class TypingActivity extends AppCompatActivity {
         }
         mp3a = soundPool.load(this, R.raw.a, 1);
 
-        // 🔹 初回ランダムテキストを表示
+        //  初回ランダムテキストを表示
         currentText = getRandomText();
         randomTextView.setText(currentText);
 
-        // 🔹 タイマー設定 (60秒)
+        //  タイマー設定 (60秒)
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -85,7 +85,7 @@ public class TypingActivity extends AppCompatActivity {
             }
         }.start();
 
-        // 🔹 **解答チェック**
+        //  **解答チェック**
         userInputEditText.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE ||
                     (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {

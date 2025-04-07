@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.testapp.ProfileEditActivity; // ✅ testappパッケージのProfileEditActivityをインポート！
+import com.example.testapp.ProfileEditActivity; //  testappパッケージのProfileEditActivityをインポート！
+import com.example.flickmaster.StoryModeActivity;
+import com.example.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
     private EditText playerNameEditText;
@@ -22,33 +24,33 @@ public class MainActivity extends AppCompatActivity {
         Button startButton = findViewById(R.id.startButton);
         Button rankingButton = findViewById(R.id.rankingButton);
         Button gardenButton = findViewById(R.id.gardenButton);
-        Button profileButton = findViewById(R.id.profileButton); // ✅ プロフィール編集ボタンを追加
+        Button profileButton = findViewById(R.id.profileButton);
 
         // 🔹 SharedPreferences を取得
         prefs = getSharedPreferences("PlayerPrefs", MODE_PRIVATE);
         String savedName = prefs.getString("player_name", "Player");
         playerNameEditText.setText(savedName);
 
-        // ✅ **スタートボタンのクリック処理**
+        //  **スタートボタンのクリック処理**
         startButton.setOnClickListener(v -> {
             String playerName = playerNameEditText.getText().toString().trim();
             if (playerName.isEmpty()) {
                 playerName = "Player";
             }
 
-            // 🔹 プレイヤー名を SharedPreferences に保存
+            //  プレイヤー名を SharedPreferences に保存
             prefs.edit().putString("player_name", playerName).apply();
 
-            // 🔥 ゲーム画面へ遷移し、プレイヤー名を渡す
+            //  ゲーム画面へ遷移し、プレイヤー名を渡す
             Intent intent = new Intent(MainActivity.this, TypingActivity.class);
             intent.putExtra("PLAYER_NAME", playerName);
             startActivity(intent);
         });
 
-        // ✅ **ランキングボタンのクリック処理**
+        //  **ランキングボタンのクリック処理**
         rankingButton.setOnClickListener(v -> RankingManager.openRankingActivity(MainActivity.this));
 
-        // ✅ **庭へ行くボタンのクリック処理**
+        //  **庭へ行くボタンのクリック処理**
         gardenButton.setOnClickListener(v -> {
             String playerName = playerNameEditText.getText().toString().trim();
             if (playerName.isEmpty()) {
@@ -61,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // ✅ **プロフィール編集ボタンのクリック処理**
+        //  **プロフィール編集ボタンのクリック処理**
         profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ProfileEditActivity.class); // 🔥 ProfileActivity → ProfileEditActivity に修正！
+            startActivity(intent);
+        });
+
+        Button storyModeButton = findViewById(R.id.storyModeButton);
+        storyModeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, StoryModeActivity.class);
             startActivity(intent);
         });
     }

@@ -7,9 +7,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FlickMaster"> <!-- ✅ ここを修正！ -->
+        android:theme="@style/Theme.FlickMaster">
 
-        <!-- MainActivity を登録 -->
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -19,14 +18,11 @@
         </activity>
 
         <activity android:name=".ResultActivity" />
-
         <activity android:name=".TypingActivity" />
-
         <activity android:name="com.example.testapp.ProfileEditActivity" />
-
         <activity android:name=".RankingActivity"/>
-
         <activity android:name=".GardenActivity"/>
+        <activity android:name="com.example.flickmaster.StoryModeActivity" />
 
     </application>
 
